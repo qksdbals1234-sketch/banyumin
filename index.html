@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반유민 포트폴리오</title>
+    <!-- 폰트 적용 (Pretendard) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-color: #58a6ff;
+            --accent-glow: rgba(88, 166, 255, 0.4);
+            --border-color: #30363d;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* 헤더 스타일링 */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(145deg, var(--surface-color), #1c2128);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #58a6ff, #a371f7, #58a6ff);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .quote {
+            font-size: 1.25em;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .contact-info {
+            display: inline-block;
+            background: rgba(139, 148, 158, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            border: 1px solid var(--border-color);
+        }
+
+        /* 섹션 공통 스타일 */
+        section {
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #ffffff;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '>';
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* 카드 UI 스타일링 */
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px var(--accent-glow);
+            border-color: var(--accent-color);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .card-subtitle {
+            font-size: 0.95em;
+            color: var(--accent-color);
+            margin-top: 5px;
+        }
+
+        .card-date {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* 리스트 스타일링 */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        /* 프로젝트 특화 스타일 */
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .tag {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 600px) {
+            .card-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            h1 { font-size: 2.2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>반유민</h1>
+            <div class="quote">"남들이 언제나 믿고 맡길 수 있는 QA 엔지니어"</div>
+            <div class="contact-info">✉️ qksdbals123@naver.com</div>
+        </header>
+
+        <section>
+            <h2>학력</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">유한대학교</h3>
+                        <div class="card-subtitle">컴퓨터공학과 게임콘텐츠전공 / 전문학사</div>
+                    </div>
+                    <div class="card-date">2022.03 ~ 현재</div>
+                </div>
+                <ul>
+                    <li>학점 : 3.7 / 4.5</li>
+                    <li>자격증 : 컴퓨터활용능력 2급</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">원미고등학교</h3>
+                        <div class="card-subtitle">자연계열</div>
+                    </div>
+                    <div class="card-date">2019.03 ~ 2022.02</div>
+                </div>
+                <ul>
+                    <li>3년 동안 멀티미디어 담당</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>경력</h2>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">기아AUTOLAND(광명)</h3>
+                        <div class="card-subtitle">엔지니어 / 생산인턴</div>
+                    </div>
+                    <div class="card-date">2026.01 ~ 현재</div>
+                </div>
+                <ul>
+                    <li>EV시리즈 전기차 뒷 범퍼 조립</li>
+                    <li>카니발 A,B,C 필러 조립</li>
+                    <li>카니발 자재 견인차로 수송</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">두끼</h3>
+                        <div class="card-subtitle">서빙 / 알바</div>
+                    </div>
+                    <div class="card-date">2025.07 ~ 현재</div>
+                </div>
+                <ul>
+                    <li>손님 안내</li>
+                    <li>카운터 결제 및 정산</li>
+                    <li>재료 손질 및 채우기</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">CU편의점</h3>
+                        <div class="card-subtitle">서비스직 / 주간 알바</div>
+                    </div>
+                    <div class="card-date">2025.01 ~ 2025.06</div>
+                </div>
+                <ul>
+                    <li>손님 응대 및 결제</li>
+                    <li>재고 채우기 및 정렬</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">GS25 편의점</h3>
+                        <div class="card-subtitle">서비스직 / 주간 및 야간 알바</div>
+                    </div>
+                    <div class="card-date">2022.01 ~ 2022.12</div>
+                </div>
+                <ul>
+                    <li>손님 응대 및 결제</li>
+                    <li>재고 채우기 및 정렬</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>프로젝트 경험</h2>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">QUADRANT</h3>
+                        <div class="card-subtitle">기능 개발</div>
+                    </div>
+                    <div class="card-date">2026.03 ~ 2026.07</div>
+                </div>
+                
+                <div class="project-meta">
+                    <span class="tag">💡 역할: 개발, QA, 사운드</span>
+                    <span class="tag">🛠 기술: Unity, C#, Figma</span>
+                </div>
+
+                <div style="color: #ffffff; font-weight: 600; margin-bottom: 10px;">주요 업무 및 성과</div>
+                <ul>
+                    <li>메인 타이틀 화면 구현</li>
+                    <li>모든 씬 화면에 사운드 구현</li>
+                    <li>게임 테스트 및 버그 수정</li>
+                    <li>게임 옵션 창 구현</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
