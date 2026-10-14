@@ -360,6 +360,7 @@
             padding: 9px 12px;
             text-align: left;
             vertical-align: top;
+            word-break: keep-all;
         }
         .doc-table th {
             background: rgba(88, 166, 255, 0.08);
@@ -367,6 +368,18 @@
             font-weight: 600;
             white-space: nowrap;
         }
+
+        .doc-body h5 {
+            margin: 20px 0 6px;
+            font-size: 1em;
+            color: #ffffff;
+        }
+        .slider.photo {
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .slider.photo .slide { aspect-ratio: 3 / 2; }
 
         @media (max-width: 600px) {
             .assign-top { flex-direction: column; }
@@ -743,6 +756,120 @@
                     </div>
                 </details>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">트릭컬 리바이브 재미요소 분석</h3>
+                        <div class="card-subtitle">게임 분석 과제 · 3주년 '600뽑기 증정' 이벤트 중심</div>
+                    </div>
+                    <div class="card-date">2026.10</div>
+                </div>
+
+                <div class="slider photo" aria-roledescription="carousel" aria-label="트릭컬 리바이브 3주년 이벤트 화면">
+                    <div class="slider-track" tabindex="0">
+                        <figure class="slide">
+                            <img src="images/trickcal-1.jpg" alt="3주년 이벤트 '은방울꽃에 맺힌 기억' 웰컴 보상 화면" loading="lazy">
+                            <figcaption>웰컴 보상: 은방울꽃에 맺힌 기억</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/trickcal-2.jpg" alt="3주년 이벤트 '네잎클로버를 찾아서' 15일 출석 보상 화면" loading="lazy">
+                            <figcaption>15일 출석 보상: 네잎클로버를 찾아서</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/trickcal-3.jpg" alt="3주년 이벤트 '이달의 우수복권' 복권 선택 화면" loading="lazy">
+                            <figcaption>이달의 우수복권</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/trickcal-4.jpg" alt="3주년 이벤트 '슈뢰딩거의 토끼' 뽑기 화면" loading="lazy">
+                            <figcaption>슈뢰딩거의 토끼</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/trickcal-5.jpg" alt="3주년 이벤트 '돌아올 행복을 위해' 플립 화면" loading="lazy">
+                            <figcaption>돌아올 행복을 위해</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/trickcal-6.jpg" alt="3주년 이벤트 보상 네 가지를 한눈에 정리한 안내 이미지" loading="lazy">
+                            <figcaption>3주년 이벤트 한눈에 보기</figcaption>
+                        </figure>
+                    </div>
+                    <button class="slider-btn prev" type="button" aria-label="이전 화면">&#8249;</button>
+                    <button class="slider-btn next" type="button" aria-label="다음 화면">&#8250;</button>
+                    <div class="slider-dots"></div>
+                </div>
+
+                <p class="assign-summary">트릭컬 리바이브의 재미는 '귀여운 캐릭터에 대한 애착'을 중심으로 수집, 서사, 운영이 맞물려 있는 구조에서 나온다고 보고, 3주년 600뽑기 증정 이벤트를 통해 이를 분석했습니다. 이벤트의 보상 구조를 살펴보고, 감각·수집·서사·전략·사회적 재미 다섯 가지 관점으로 나눠 정리한 뒤 한계와 개선 방향까지 제안했습니다.</p>
+
+                <div class="project-meta" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+                    <span class="tag">📝 구분: 게임 분석</span>
+                    <span class="tag">🎮 장르: 수집형 RPG</span>
+                    <span class="tag">🔍 관점: 감각 · 수집 · 서사 · 전략 · 사회적 재미</span>
+                </div>
+
+                <div style="color: #ffffff; font-weight: 600; margin: 20px 0 10px;">분석 핵심</div>
+                <ul>
+                    <li>보상을 '즉시 → 누적 → 확정' 단계로 나눠, 뽑기의 기대감은 살리고 결과가 나쁠 때의 실망감은 확정권으로 줄인 설계</li>
+                    <li>'볼 꼬집기' 같은 터치 반응이 애착을 만들고, 그 애착이 수집 동기로 이어지는 흐름</li>
+                    <li>대량 무료 뽑기가 반복되면 뽑기 자체의 가치가 떨어질 수 있어, 보상의 양보다 경험의 질을 차별화해야 한다는 결론</li>
+                </ul>
+
+                <details class="doc">
+                    <summary>분석 전문 보기</summary>
+                    <div class="doc-body">
+
+                        <h4>1. 분석 개요</h4>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>항목</th><th>내용</th></tr>
+                                <tr><td>게임명</td><td>트릭컬 리바이브 (에피드게임즈)</td></tr>
+                                <tr><td>장르</td><td>수집형 RPG</td></tr>
+                                <tr><td>분석 대상</td><td>3주년 업데이트 및 600뽑기 증정 이벤트</td></tr>
+                                <tr><td>이벤트 기간</td><td>2026.09.24 ~ 10.22</td></tr>
+                                <tr><td>분석 관점</td><td>감각 · 수집 · 서사 · 전략 · 사회적 재미</td></tr>
+                            </table>
+                        </div>
+                        <p>트릭컬 리바이브는 2023년 9월 27일 출시된 수집형 RPG로, 캐릭터 수집과 스토리 중심으로 서비스되어 왔습니다. 3주년을 맞아 9월 24일 대규모 업데이트가 진행되어 신규 엘다인 사도 '비비(신성)'와 '우이(기억)'가 추가되었고, 이후 국내 구글 플레이 매출 4위로 출시 이후 최고 순위를 기록했습니다.</p>
+
+                        <h4>2. 3주년 600뽑기 이벤트 구조</h4>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>단계</th><th>보상</th><th>설계 의도</th></tr>
+                                <tr><td>즉시 지급</td><td>3주년 기념 테두리, 사도 모집 티켓 30장, 취향 모집 티켓 30장</td><td>접속 즉시 보상으로 첫인상 강화</td></tr>
+                                <tr><td>누적 출석</td><td>최대 15일 출석 시 에르핀(왕도)·네르(빡침) 확정 모집권, 몽환의 메이아 선택권 등</td><td>지속 접속 유도, 운에 따른 손해 보완</td></tr>
+                                <tr><td>추가 지급</td><td>15일 출석 보상에 포함된 사도·취향 모집 티켓 각 180장</td><td>대량 뽑기로 덱 구성 지원</td></tr>
+                            </table>
+                        </div>
+                        <p><strong>분석</strong>: 보상을 '즉시 → 누적 → 확정' 단계로 나누어, 가챠 특유의 기대감은 유지하면서 결과가 나쁠 때의 실망감은 확정권으로 완화했습니다. 무료 재화라서 유저는 부담 없이 뽑기의 설렘만 경험할 수 있고, 신규·복귀 유저는 짧은 기간에 전력을 갖춰 본 콘텐츠에 진입할 수 있습니다.</p>
+
+                        <h4>3. 핵심 재미요소 분석</h4>
+                        <h5>① 감각적 재미 : 캐릭터 인터랙션</h5>
+                        <p>'볼 꼬집기'로 대표되는 귀여운 캐릭터 디자인이 게임의 상징입니다. 전투력과 무관한 터치 반응이 캐릭터에 대한 애착을 만들고, 이는 다시 수집 동기로 이어집니다.</p>
+                        <h5>② 수집의 재미 : 뽑기와 도감</h5>
+                        <p>대량 뽑기로 다양한 캐릭터를 빠르게 확보하며 '모으는 재미'를 집중적으로 경험하게 합니다. 새 캐릭터 획득, 육성, 덱 변화로 이어지는 순환 구조가 플레이 동기를 유지시킵니다.</p>
+                        <h5>③ 서사의 재미 : 스토리</h5>
+                        <p>유머와 진지함을 오가는 풀보이스 스토리가 강점입니다. 귀여운 외형과 무거운 세계관의 대비가 '반전'을 만들며 몰입을 높입니다.</p>
+                        <h5>④ 전략·성장의 재미 : 전투와 육성</h5>
+                        <p>자동 전투 기반으로 조작 부담은 낮추고, 사도 배치와 조합, 육성 방향을 정하는 데에서 전략적 판단을 요구합니다.</p>
+                        <h5>⑤ 사회적 재미 : 게임 밖 운영</h5>
+                        <p>1주년 '위험한 초대' 콘셉트 특별 방송 이후 매년 독창적인 형식의 방송이 관심을 모아 왔습니다. 3주년 방송에서는 무한도전 '죄와 길'을 패러디한 '죄와 볼' 코너로, 대표·PD 등 사업부와 핵심 개발진이 편을 나눠 재판을 벌이는 형식을 선보였습니다. 9월 27일부터는 홍대 골든 크레마에서 콜라보 카페도 진행되었습니다. 운영 자체가 콘텐츠가 되어, 유저가 개발사와 함께 노는 듯한 소속감을 만듭니다.</p>
+
+                        <h4>4. 한계 및 개선 방향</h4>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>문제점</th><th>내용</th><th>개선 제안</th></tr>
+                                <tr><td>뽑기 가치 하락</td><td>대량 무료 뽑기를 반복하면 1회 뽑기의 설렘이 줄어듦</td><td>이벤트 뽑기에 연출·수집 보상 차별화</td></tr>
+                                <tr><td>출석 의무감</td><td>15일 누적 구조가 '숙제'로 느껴질 수 있음</td><td>누락일 보완 장치 (만회 출석 등)</td></tr>
+                                <tr><td>정보 과부하</td><td>한 번에 많은 캐릭터를 얻으면 육성 우선순위가 혼란스러움</td><td>보유 캐릭터 기반 추천 덱·육성 가이드 제공</td></tr>
+                            </table>
+                        </div>
+
+                        <h4>5. 결론</h4>
+                        <p>트릭컬 리바이브의 재미는 <strong>'귀여운 캐릭터에 대한 애착'</strong>을 중심으로 수집·서사·운영이 맞물려 있는 구조에서 나옵니다. 3주년 600뽑기 이벤트는 이 애착을 대량으로, 부담 없이 경험하게 만드는 장치로서 신규·복귀 유저 유입과 기존 유저의 재몰입을 동시에 이끌어냈습니다. 다만 반복적인 대량 보상은 뽑기 자체의 가치를 떨어뜨릴 수 있으므로, 보상의 양보다 경험의 질을 차별화하는 설계가 장기적으로 필요합니다.</p>
+
+                    </div>
+                </details>
+            </div>
+
         </section>
 
     </div>
