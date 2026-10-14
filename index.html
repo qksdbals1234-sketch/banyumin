@@ -296,6 +296,83 @@
             color: var(--text-secondary);
         }
 
+        /* 과제: 기획서 */
+        .assign-top {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .assign-cover {
+            flex: 0 0 150px;
+            width: 150px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: block;
+        }
+        .assign-summary { margin: 0 0 14px; color: var(--text-primary); }
+
+        details.doc {
+            margin-top: 22px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 16px;
+        }
+        details.doc > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(88, 166, 255, 0.35);
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        details.doc > summary::-webkit-details-marker { display: none; }
+        details.doc > summary::after { content: '▾'; transition: transform 0.2s ease; }
+        details.doc[open] > summary::after { transform: rotate(180deg); }
+        details.doc > summary:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+
+        .doc-body { margin-top: 24px; }
+        .doc-body h4 {
+            margin: 30px 0 12px;
+            font-size: 1.1em;
+            color: #ffffff;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-color);
+        }
+        .doc-body h4:first-child { margin-top: 0; }
+        .doc-body p { margin: 0 0 12px; color: var(--text-primary); }
+        .doc-body .note { font-size: 0.88em; color: var(--text-secondary); }
+        .doc-body strong { color: #ffffff; }
+
+        .table-wrap { overflow-x: auto; margin: 4px 0 14px; }
+        table.doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92em;
+        }
+        .doc-table th, .doc-table td {
+            border: 1px solid var(--border-color);
+            padding: 9px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .doc-table th {
+            background: rgba(88, 166, 255, 0.08);
+            color: #ffffff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            .assign-top { flex-direction: column; }
+            .assign-cover { width: 120px; flex-basis: auto; }
+        }
+
         /* 애니메이션 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -516,6 +593,158 @@
                 </ul>
             </div>
         </section>
+
+        <section>
+            <h2>과제</h2>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">『PEAK』 이벤트 기획서 : 따로, 또 같이</h3>
+                        <div class="card-subtitle">이벤트 기획 과제</div>
+                    </div>
+                    <div class="card-date">2026.09.17</div>
+                </div>
+
+                <div class="assign-top">
+                    <img class="assign-cover" src="images/peak-cover.jpg" alt="PEAK 게임 커버 이미지" loading="lazy">
+                    <div>
+                        <p class="assign-summary">트렌드 코리아 2026의 '1.5가구' 키워드를 바탕으로, 인디 협동 게임 PEAK에서 진행하는 2주짜리 랜덤 등반 이벤트를 기획했습니다. 혼자이지만 느슨하게 연결되고 싶은 유저 심리를 게임 속 협동 콘텐츠와 결합해, 신규 유입과 커뮤니티 확장을 함께 노렸습니다.</p>
+                        <div class="project-meta" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+                            <span class="tag">📝 구분: 이벤트 기획서</span>
+                            <span class="tag">💡 역할: 기획</span>
+                            <span class="tag">📈 트렌드: 1.5가구</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="color: #ffffff; font-weight: 600; margin-bottom: 10px;">기획 핵심</div>
+                <ul>
+                    <li>하루 3회(19시, 21시, 23시)에만 열리는 '오늘의 등반조'에서 무작위 3인과 협동하고 흩어지는 구조</li>
+                    <li>성공 여부와 상관없이 참여만으로 보상을 받는 저부담·고빈도 리워드 설계 (실패해도 받는 '그래도 함께했다' 배지)</li>
+                    <li>실패·해프닝 클립을 SNS로 퍼뜨리는 클립 챌린지와 중소형 코옵 크리에이터 중심의 홍보</li>
+                    <li>DAU, D+7 재접속률, 클립 게시물 수, 신규 친구 등록 수, 신규 유입 전환율로 성과 측정</li>
+                </ul>
+
+                <details class="doc">
+                    <summary>기획서 전문 보기</summary>
+                    <div class="doc-body">
+
+                        <h4>1. 트렌드 분석 : 1.5가구</h4>
+                        <p>『트렌드 코리아 2026』은 '1.5가구'를 침해받고 싶지 않은 개인의 자율성(1)을 지키면서, 적당한 수준의 연결감(0.5)은 유지하려는 사람들로 설명합니다. 1인 가구가 보편화되는 가운데에서도 느슨하고 부담 없는 연결에 대한 수요는 오히려 커지고 있다는 뜻입니다.</p>
+                        <p>게임 이용 행태에서는 이 흐름이 '가벼운 협동 플레이' 열풍으로 나타납니다. 《PEAK》, 《R.E.P.O.》 같은 소규모 인디 협동 게임이 2025년 스팀에서 크게 흥행한 배경에는, 정기적인 길드·클랜 활동 없이도 마음 맞는 사람과 짧게 접속해 즐기고 빠지는 방식이 있습니다.</p>
+                        <ul>
+                            <li><strong>낮은 진입장벽</strong>: 파티 구성이 즉흥적이고, 장기적인 소속감을 요구하지 않음</li>
+                            <li><strong>콘텐츠 친화성</strong>: 실패와 해프닝이 그대로 클립이 되어 크리에이터를 통한 확산에 유리함</li>
+                            <li><strong>정서적 만족</strong>: '혼자가 아니라는 감각'을 짧고 굵게 채워 줌</li>
+                        </ul>
+                        <p>이 이벤트는 '따로 있지만 함께 있는 느낌'이라는 지점을 정면으로 활용합니다.</p>
+
+                        <h4>2. 대상 게임 소개 : PEAK</h4>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>항목</th><th>내용</th></tr>
+                                <tr><td>장르</td><td>최대 4인 협동 서바이벌·등반</td></tr>
+                                <tr><td>특징</td><td>짧은 세션, 실패가 곧 재미 요소</td></tr>
+                                <tr><td>흥행 배경</td><td>2025년 스팀 친구 그룹 코옵 열풍의 대표작</td></tr>
+                                <tr><td>가격대</td><td>10달러 이하 저가형, 영상 시청 후 구매로 이어지기 쉬움</td></tr>
+                            </table>
+                        </div>
+                        <p>PEAK는 정형화된 길드 시스템 없이도 '같이 하는 순간'을 만들어 내는 구조라서 1.5가구 트렌드와 잘 맞습니다. 등반 중 생기는 실수와 협동 실패가 그 자체로 웃음 포인트가 되어 짧은 클립으로 퍼지기 좋고, 이벤트 참여자가 '가볍게 왔다가도 콘텐츠를 남기고 가는' 흐름을 설계하기에도 유리합니다.</p>
+
+                        <h4>3. 이벤트 콘셉트 및 목표</h4>
+                        <p><strong>이벤트명</strong>: 「따로, 또 같이」 랜덤 등반 위크</p>
+                        <p><strong>핵심 콘셉트</strong>: 매일 정해진 시간에만 열리는 '오늘의 등반조'에 무작위로 배정되어, 낯선 3인과 짧게 협동하고 흩어집니다. 관계가 이어지지 않아도 되고, 원하면 다시 친구로 이어질 수도 있습니다. (이벤트 기간 한정으로 랜덤 매칭을 도입한다는 전제의 제안입니다.)</p>
+                        <ul>
+                            <li><strong>신규 유입 확대</strong>: 저부담 매칭으로 진입장벽을 낮춰 신규 플레이어를 유도</li>
+                            <li><strong>재접속률 상승</strong>: 매일 다른 조합이라는 기대감으로 반복 접속을 유도</li>
+                            <li><strong>콘텐츠 자연 확산</strong>: 실패·해프닝 클립의 SNS·커뮤니티 공유를 촉진</li>
+                            <li><strong>느슨한 커뮤니티 형성</strong>: 강제성 없는 친구 추가가 자연스럽게 늘어나도록 유도</li>
+                        </ul>
+
+                        <h4>4. 이벤트 상세 내용</h4>
+                        <p><strong>진행 방식</strong></p>
+                        <ul>
+                            <li>하루 3개 시간대(19:00, 21:00, 23:00)에만 '오늘의 등반조' 매칭 오픈</li>
+                            <li>참가 신청 시 무작위 3인 파티를 자동 배정하며, 당일에는 별도 파티 초대 불가</li>
+                            <li>등반 성공 여부와 무관하게 참여 자체로 기본 보상 지급</li>
+                        </ul>
+                        <p><strong>핵심 미션</strong></p>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>미션명</th><th>내용</th><th>보상</th></tr>
+                                <tr><td>오늘의 등반</td><td>배정된 3인과 정상까지 도달</td><td>시즌 전용 장식 아이템</td></tr>
+                                <tr><td>실패 배지</td><td>등반에 실패해도 특별 배지 지급 ('그래도 함께했다')</td><td>프로필 배지</td></tr>
+                                <tr><td>클립 챌린지</td><td>플레이 영상·짤을 해시태그와 함께 SNS에 업로드</td><td>추첨 상품</td></tr>
+                                <tr><td>다시 만남</td><td>무작위로 만난 파티원과 친구 등록</td><td>소량 재화</td></tr>
+                            </table>
+                        </div>
+                        <p><strong>콘텐츠 구성</strong></p>
+                        <ul>
+                            <li>매일 밤 등반이 끝나면 '오늘의 베스트 클립'을 공식 채널에 큐레이션</li>
+                            <li>실패 사례 모음 하이라이트를 주간 단위로 편집해 커뮤니티에 공유</li>
+                        </ul>
+
+                        <h4>5. 진행 일정</h4>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>구분</th><th>기간</th><th>내용</th></tr>
+                                <tr><td>사전 예고</td><td>D-14 ~ D-1</td><td>티저 이미지, 크리에이터 스포일러 공개</td></tr>
+                                <tr><td>사전 신청</td><td>D-7 ~ D-1</td><td>이벤트 참여 알림 신청 오픈</td></tr>
+                                <tr><td>본 이벤트</td><td>D-Day ~ D+13 (2주)</td><td>'오늘의 등반조' 일 3회 매칭 상시 진행</td></tr>
+                                <tr><td>클립 챌린지 마감</td><td>D+13</td><td>SNS 업로드 마감</td></tr>
+                                <tr><td>결과 발표·시상</td><td>D+14 ~ D+17</td><td>클립 챌린지 당첨자 발표, 추첨 상품 지급</td></tr>
+                            </table>
+                        </div>
+                        <p class="note">※ D-Day는 확정 후 반영하며, 방학·연휴 등 게임 이용 성수기와 겹치지 않는지 확인이 필요합니다.</p>
+
+                        <h4>6. 참여 혜택 및 리워드</h4>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>단계</th><th>조건</th><th>보상</th></tr>
+                                <tr><td>참여 보상</td><td>'오늘의 등반조' 1회 이상 참여</td><td>시즌 전용 프로필 스킨</td></tr>
+                                <tr><td>누적 보상</td><td>5회 참여</td><td>한정 등반 장비 스킨</td></tr>
+                                <tr><td>누적 보상</td><td>10회 참여 (전 기간 완주)</td><td>특별 칭호 + 실물 굿즈 응모권</td></tr>
+                                <tr><td>클립 챌린지</td><td>우수 클립 선정</td><td>기프티콘 또는 게이밍 기어 추첨</td></tr>
+                                <tr><td>다시 만남 보상</td><td>무작위 파티원과 친구 등록</td><td>소량 인게임 재화</td></tr>
+                            </table>
+                        </div>
+                        <p>보상은 고가치 확정형보다 '가볍게 계속하고 싶어지는' 저부담·고빈도 구조로 설계해, 매일 접속할 이유를 만드는 데 집중했습니다.</p>
+
+                        <h4>7. 홍보 및 채널 전략</h4>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>채널</th><th>실행안</th></tr>
+                                <tr><td>스트리밍·유튜브</td><td>등반 실패 클립에 강한 크리에이터를 다수 섭외하고, 동시다발 방송으로 화제성 확보</td></tr>
+                                <tr><td>인스타그램·틱톡</td><td>실패 순간을 담은 짧은 릴스 포맷으로 클립 챌린지 유도</td></tr>
+                                <tr><td>커뮤니티 (디시, 스팀 포럼 등)</td><td>일일 등반 결과 요약, 밈화 유도</td></tr>
+                                <tr><td>공식 SNS·디스코드</td><td>'오늘의 베스트 클립'을 매일 큐레이션해 발행</td></tr>
+                            </table>
+                        </div>
+                        <p>크리에이터는 대형 인플루언서보다 실패·해프닝 콘텐츠에 강한 중소형 코옵 전문 크리에이터를 우선 섭외합니다. PEAK류 게임이 애초에 클립형 콘텐츠 확산으로 흥행한 구조이기 때문입니다.</p>
+
+                        <h4>8. 기대효과 및 성과지표 (KPI)</h4>
+                        <ul>
+                            <li>1.5가구 트렌드에 맞는 저부담 소셜 경험으로 신규·복귀 유저 유입</li>
+                            <li>실패 콘텐츠 확산을 통한 자연 마케팅(오가닉 바이럴) 효과</li>
+                            <li>강제적인 소속감 없이도 친구 관계망이 자연스럽게 확장</li>
+                        </ul>
+                        <div class="table-wrap">
+                            <table class="doc-table">
+                                <tr><th>지표</th><th>측정 기준</th></tr>
+                                <tr><td>일일 활성 참여자 수 (DAU)</td><td>이벤트 기간 vs 직전 2주 평균</td></tr>
+                                <tr><td>재접속률</td><td>이벤트 참여자의 D+7 재접속 비율</td></tr>
+                                <tr><td>클립 챌린지 게시물 수</td><td>해시태그 기준 집계</td></tr>
+                                <tr><td>신규 친구 등록 수</td><td>'다시 만남' 보상 수령 건수</td></tr>
+                                <tr><td>신규 유입 전환율</td><td>이벤트 유입 대비 실제 구매·설치 전환</td></tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </details>
+            </div>
+        </section>
+
     </div>
 
     <script>
