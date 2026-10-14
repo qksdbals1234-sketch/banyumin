@@ -189,6 +189,104 @@
             border: 1px solid rgba(88, 166, 255, 0.2);
         }
 
+        /* 이미지 슬라이더 */
+        .slider {
+            position: relative;
+            margin-bottom: 22px;
+        }
+
+        .slider-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: #05070a;
+            scrollbar-width: none;
+        }
+        .slider-track::-webkit-scrollbar { display: none; }
+
+        .slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            margin: 0;
+            aspect-ratio: 16 / 9;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .slide figcaption {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            padding: 28px 16px 12px;
+            font-size: 0.9em;
+            color: #ffffff;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: calc(50% - 22px);
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: rgba(13, 17, 23, 0.8);
+            color: #ffffff;
+            font-size: 1.3em;
+            line-height: 1;
+            cursor: pointer;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+        .slider-btn:hover, .slider-btn:focus-visible {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            outline: none;
+        }
+        .slider-btn.prev { left: 10px; }
+        .slider-btn.next { right: 10px; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border-radius: 50%;
+            border: none;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .dot.active {
+            background: var(--accent-color);
+            transform: scale(1.3);
+        }
+        .dot:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        .slider-count {
+            margin-left: 8px;
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+
         /* 애니메이션 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -262,6 +360,7 @@
                     <li>카니발 자재 견인차로 수송</li>
                 </ul>
             </div>
+        </section>
 
         <section>
             <h2>프로젝트 경험</h2>
@@ -274,7 +373,35 @@
                     </div>
                     <div class="card-date">2026.03 ~ 2026.07</div>
                 </div>
-                
+
+                <div class="slider" aria-roledescription="carousel" aria-label="QUADRANT 게임 화면">
+                    <div class="slider-track" tabindex="0">
+                        <figure class="slide">
+                            <img src="images/quadrant-1.jpg" alt="QUADRANT 메인 타이틀 화면" loading="lazy">
+                            <figcaption>메인 타이틀 화면</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/quadrant-2.jpg" alt="경로를 선택하는 스테이지 맵 화면" loading="lazy">
+                            <figcaption>스테이지 경로 선택 맵</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/quadrant-3.jpg" alt="얼음 스테이지 보스 전투 화면" loading="lazy">
+                            <figcaption>얼음 스테이지 보스 전투</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/quadrant-4.jpg" alt="능력치를 올리는 STATUS 창" loading="lazy">
+                            <figcaption>STATUS 창 (능력치 강화)</figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="images/quadrant-5.jpg" alt="itch.io에 올린 QUADRANT 배포 페이지" loading="lazy">
+                            <figcaption>itch.io 배포 페이지</figcaption>
+                        </figure>
+                    </div>
+                    <button class="slider-btn prev" type="button" aria-label="이전 화면">&#8249;</button>
+                    <button class="slider-btn next" type="button" aria-label="다음 화면">&#8250;</button>
+                    <div class="slider-dots"></div>
+                </div>
+
                 <div class="project-meta">
                     <span class="tag">💡 역할: 개발, QA, 사운드</span>
                     <span class="tag">🛠 기술: Unity, C#, Figma</span>
@@ -290,6 +417,56 @@
             </div>
         </section>
     </div>
+
+    <script>
+        document.querySelectorAll('.slider').forEach(function (slider) {
+            var track = slider.querySelector('.slider-track');
+            var slides = slider.querySelectorAll('.slide');
+            var dotsBox = slider.querySelector('.slider-dots');
+            var prev = slider.querySelector('.prev');
+            var next = slider.querySelector('.next');
+            var dots = [];
+
+            slides.forEach(function (_, i) {
+                var d = document.createElement('button');
+                d.type = 'button';
+                d.className = 'dot';
+                d.setAttribute('aria-label', (i + 1) + '번째 화면');
+                d.addEventListener('click', function () { go(i); });
+                dotsBox.appendChild(d);
+                dots.push(d);
+            });
+
+            var count = document.createElement('span');
+            count.className = 'slider-count';
+            dotsBox.appendChild(count);
+
+            function current() {
+                return Math.round(track.scrollLeft / track.clientWidth);
+            }
+            function go(i) {
+                i = Math.max(0, Math.min(slides.length - 1, i));
+                track.scrollTo({ left: i * track.clientWidth });
+            }
+            function update() {
+                var i = current();
+                dots.forEach(function (d, n) { d.classList.toggle('active', n === i); });
+                count.textContent = (i + 1) + ' / ' + slides.length;
+                prev.style.visibility = i === 0 ? 'hidden' : 'visible';
+                next.style.visibility = i === slides.length - 1 ? 'hidden' : 'visible';
+            }
+
+            prev.addEventListener('click', function () { go(current() - 1); });
+            next.addEventListener('click', function () { go(current() + 1); });
+            track.addEventListener('scroll', update, { passive: true });
+            track.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowLeft') { e.preventDefault(); go(current() - 1); }
+                if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); }
+            });
+            window.addEventListener('resize', function () { go(current()); });
+            update();
+        });
+    </script>
 
 </body>
 </html>
